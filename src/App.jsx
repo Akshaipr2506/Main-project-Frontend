@@ -30,8 +30,8 @@ function App() {
         <Route path='/adminhome' element={<AdminProtector><Adminhome/></AdminProtector>}/>
         <Route path='/userhome' element={<UserProtector><Userhome/></UserProtector>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/user-register' element={<UserProtector><UserRegister/></UserProtector>}/>
-        <Route path='/service-register' element={<ServiceProtector><ServiceRegister/></ServiceProtector>}/>
+        <Route path='/user-register' element={<UserRegister/>}/>
+        <Route path='/service-register' element={<ServiceRegister/>}/>
         <Route path='/servicehome' element={<ServiceProtector><Servicehome/></ServiceProtector>}/>
         <Route path='/servicelogin' element={<ServiceLogin/>}/>
         <Route path='/registration' element={<ServiceProtector><Registration/></ServiceProtector>}/>
