@@ -77,6 +77,9 @@ sessionStorage.clear()
           backgroundPosition: 'center',
         }}
       >
+        <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
+          <button className='btn btn-primary' onClick={() => navigate('/')}>Home</button>
+        </div>
         <div className="card p-4 shadow" style={{ width: '100%', maxWidth: '400px' }}>
           <h2 className="text-center mb-4">Service Login</h2>
           <form>

@@ -4,38 +4,38 @@ import { userLoginApi } from '../services/allApi';
 
 function Login() {
 
-  const navigate=useNavigate()
-  const [userDetails,setUserDetails] = useState({
-    email:"",
-    password:""
+  const navigate = useNavigate()
+  const [userDetails, setUserDetails] = useState({
+    email: "",
+    password: ""
   })
   console.log(userDetails);
-  
 
-  const userHandleLogin=async ()=>{
-    const {email,password} = userDetails
-    if(!email||!password){
+
+  const userHandleLogin = async () => {
+    const { email, password } = userDetails
+    if (!email || !password) {
       alert('please fill the form completely')
     }
-    else{
+    else {
       const result = await userLoginApi(userDetails)
       console.log(result);
-      if(result.status==200){
-        sessionStorage.setItem("existingUsers",JSON.stringify(result.data.existingUsers))
-        sessionStorage.setItem("token",result.data.token)
+      if (result.status == 200) {
+        sessionStorage.setItem("existingUsers", JSON.stringify(result.data.existingUsers))
+        sessionStorage.setItem("token", result.data.token)
 
         setUserDetails({
-          email:"",
-          password:""
+          email: "",
+          password: ""
         })
-        setTimeout(()=>{
+        setTimeout(() => {
           navigate("/userhome")
-        },2000)
+        }, 2000)
       }
-      else if(result.status==406){
+      else if (result.status == 406) {
         alert(result.response.status)
       }
-      else{
+      else {
         alert('something went wrong')
       }
     }
@@ -50,6 +50,10 @@ function Login() {
           backgroundPosition: 'center',
         }}
       >
+        <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
+          <button className='btn btn-primary' onClick={() => navigate('/')}>Home</button>
+        </div>
+
         <div className="card p-4 shadow" style={{ width: '100%', maxWidth: '400px' }}>
           <h2 className="text-center mb-4">User Login</h2>
           <form>
@@ -64,7 +68,7 @@ function Login() {
                 placeholder="Enter your email"
                 required
                 value={userDetails.email}
-                onChange={(e)=>setUserDetails({...userDetails,email:e.target.value})}
+                onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })}
               />
             </div>
             <div className="form-group mb-3">
@@ -78,7 +82,7 @@ function Login() {
                 placeholder="Enter your password"
                 required
                 value={userDetails.password}
-                onChange={(e)=>setUserDetails({...userDetails,password:e.target.value})}
+                onChange={(e) => setUserDetails({ ...userDetails, password: e.target.value })}
               />
             </div>
             <button type="button" className="btn btn-primary w-100" onClick={userHandleLogin}>

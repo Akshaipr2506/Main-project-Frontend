@@ -253,24 +253,30 @@ const handleSearchChange = (e) => {
           </div>
 
           {/* Card Section */}
-          {servicers?.map((item) => (
-            <div className="col-md-3 d-flex justify-content-center align-items-center my-5" key={item._id}>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img
-                  className="p-3"
-                  variant="top"
-                  src={`${serverUrl}/license/${item.imageOne}`}
-                />
-                <Card.Body>
-                  <Card.Title>{item.shopname}</Card.Title>
-                  <Card.Text>{item.service}</Card.Text>
-                  <Link to={'/viewdetails'} state={{ servicer: item }}>
-                    <Button variant="primary">View More...</Button>
-                  </Link>
-                </Card.Body>
-              </Card>
-            </div>
-          ))}
+          {servicers && servicers.length > 0 ? (
+  servicers.map((item) => (
+    <div className="col-md-3 d-flex justify-content-center align-items-center my-5" key={item._id}>
+      <Card style={{ width: '18rem' }}>
+        <Card.Img
+          className="p-3"
+          variant="top"
+          src={`${serverUrl}/license/${item.imageOne}`}
+        />
+        <Card.Body>
+          <Card.Title>{item.shopname}</Card.Title>
+          <Card.Text>{item.service}</Card.Text>
+          <Link to={'/viewdetails'} state={{ servicer: item }}>
+            <Button variant="primary">View More...</Button>
+          </Link>
+        </Card.Body>
+      </Card>
+    </div>
+  ))
+) : (
+  <div className="text-center text-light w-100 my-5">
+    <h1>There are no service centers near you.</h1>
+  </div>
+)}
         </div>
       </div>
     </>
